@@ -15,6 +15,9 @@ this.props.addToCart(hasItem)
     { !this.props.add && <button onClick={() =>{
 this.props.removeFromCart(hasItem)
   }}>Remove</button>}
+      { this.props.removeIt && <button onClick={() =>{
+this.props.removeFromItem(hasItem)
+  }}>Remove</button>}
 </div>
 )}
 }

@@ -83,13 +83,25 @@ class App extends Component {
 
 removeFromCart=(item)=>{
   
+      this.setState((prevState)=>{
+        let itemIndex = prevState.cart.indexOf(item);
+    return ({ cart: prevState.cart.filter((c, index)=>
+      (index !== itemIndex)
+    )})
+    })
+
+  }
+
+  removeFromItem=(item)=>{
+  
     this.setState((prevState)=>{
-      let itemIndex = prevState.cart.indexOf(item);
-  return ({ cart: prevState.cart.filter((c, index)=>
+      let itemIndex = prevState.allItems.indexOf(item);
+  return ({ allItems: prevState.allItems.filter((c, index)=>
     (index !== itemIndex)
   )})
   })
-  }
+  
+}
 
   getData=()=>{
     this.setState({
@@ -105,7 +117,7 @@ removeFromCart=(item)=>{
           description: "Everyone wants one, no one can afford one."
         },
         {
-          name: "Dell COmputer",
+          name: "Dell Computer",
           price: 599.00,
           description: "Everyone has one, nobody likes them."
         },
@@ -135,7 +147,7 @@ return (<div className="App">
 
     <Link to="/cart">My Cart</Link>
   {this.state.allItems.map((it)=>(
-    <Item key={it.name+Math.random()} item={it} addToCart={this.addToCart} add={true}></Item>
+    <Item key={it.name+Math.random()} item={it} addToCart={this.addToCart} add={true} removeFromItem={this.removeFromItem} removeIt={true}></Item>
   ))}
   </div>}
    />
