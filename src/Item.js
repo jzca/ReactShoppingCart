@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 
 class Item extends Component {
 
-  render() {
-    const item = this.props.item;
-
-    return(
-      <div>
-        <div>{item.name}</div>
-        <div>{item.price}</div>
-        <div>{item.description}</div>
-        <button onClick={() => this.props.addToCart(item)}>Add to Cart</button>
-      </div>
-    )
-  }
+render (){
+  var hasItem=this.props.item;
+  return (
+<div>
+  <p>{hasItem.name}</p>
+  <p>{hasItem.price}</p>
+  <p>{hasItem.description}</p>
+  { this.props.add && <button onClick={() =>{
+this.props.addToCart(hasItem)
+  }}>Add</button>}
+    { !this.props.add && <button onClick={() =>{
+this.props.removeFromCart(hasItem)
+  }}>Remove</button>}
+</div>
+)}
 }
 
 export default Item;
